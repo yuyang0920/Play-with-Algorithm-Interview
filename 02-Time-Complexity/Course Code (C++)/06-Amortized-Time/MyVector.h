@@ -20,6 +20,7 @@ private:
         T *newData = new T[newCapacity];
         for( int i = 0 ; i < size ; i ++ )
             newData[i] = data[i];
+        //释放掉data现在的空间
         delete[] data;
 
         data = newData;
@@ -40,6 +41,7 @@ public:
     }
 
     // Average: O(1)
+    // 均摊时间复杂度分析下依然是O(1)
     void push_back(T e){
 
         if( size == capacity )
@@ -53,7 +55,7 @@ public:
 
         assert( size > 0 );
         size --;
-
+        //此时没有真正的把元素从整个数组中删除
         return data[size];
     }
 

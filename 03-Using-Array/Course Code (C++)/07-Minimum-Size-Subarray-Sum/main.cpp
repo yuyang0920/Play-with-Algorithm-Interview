@@ -32,7 +32,7 @@ int main() {
 
     int nums[] = {2, 3, 1, 2, 4, 3};
     vector<int> vec( nums, nums + sizeof(nums)/sizeof(int) );
-    int s = 7;
+    int s = 11;
 
     cout<<Solution().minSubArrayLen(s, vec)<<endl;
 

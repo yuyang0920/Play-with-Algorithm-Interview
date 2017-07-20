@@ -10,7 +10,7 @@ int main() {
     // 数据规模倍乘测试binarySearch
     // O(logn)
     cout<<"Test for binarySearch:"<<endl;
-    for( int i = 10 ; i <= 28 ; i ++ ){
+    for( int i = 10 ; i <= 32 ; i ++ ){
 
         int n = pow(2,i);
         int *arr = MyUtil::generateOrderedArray(n);

@@ -22,17 +22,37 @@ int binarySearch( T arr[], int n, T target ){
     return -1;
 }
 
+
+template<typename T>
+int mybinarySearch(T *arr, int n, T target)
+{
+    //在arr[l...r]区间内查找
+    int l = 0, r = n-1;
+    while(l<=r)
+    {
+        int mid = l + (r-l)/2;
+        if(arr[mid] == target)
+            return mid;
+        if(arr[mid] < target)
+            l = mid+1;
+        else 
+            r = mid-1;
+    }
+    return -1;
+}
+
 int main() {
 
-    int n = pow(10,7);
+    int n = pow(10,6);
     int* data = MyUtil::generateOrderedArray(n);
 
     clock_t startTime = clock();
     for( int i = 0 ; i < n ; i ++ )
-        assert( i == binarySearch(data, n, i) );
+        assert( i == mybinarySearch(data, n, i) );
     clock_t endTime = clock();
 
     cout<<"binarySearch2 test complete."<<endl;
     cout<<"Time cost: "<<double(endTime - startTime)/CLOCKS_PER_SEC<<" s"<<endl;
     return 0;
 }
+

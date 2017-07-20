@@ -40,6 +40,7 @@ namespace MyAlgorithmTester{
         return res;
     }
 
+    //自底向上的归并排序
     // O(NlogN)
     void __merge(int arr[], int l, int mid, int r, int aux[]){
 

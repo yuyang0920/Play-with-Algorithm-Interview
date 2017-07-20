@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <stdexcept> 
 using namespace std;
 
 // 时间复杂度: O(nlogn)

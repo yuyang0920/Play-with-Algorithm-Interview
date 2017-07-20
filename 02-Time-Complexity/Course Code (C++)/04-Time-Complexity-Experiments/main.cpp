@@ -11,6 +11,7 @@ int main() {
     // 数据规模倍乘测试findMax
     // O(n)
     cout<<"Test for findMax:"<<endl;
+    //数据规模每次增加2倍！
     for( int i = 10 ; i <= 26 ; i ++ ){
 
         int n = pow(2,i);

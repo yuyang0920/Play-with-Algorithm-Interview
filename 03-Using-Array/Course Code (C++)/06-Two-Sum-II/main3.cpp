@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <stdexcept> 
 using namespace std;
 
 // 时间复杂度: O(n)
@@ -25,6 +26,26 @@ public:
                 r --;
         }
 
+        throw invalid_argument("the input has no solution");
+    }
+
+    vector<int> MyTwoSum(vector<int>& numbers, int target)
+    {
+        assert( numbers.size() >= 2 );
+        int i = 0;
+        int j = numbers.size()-1;
+        while(i<j)
+        {
+            if(numbers[i] + numbers[j] == target)
+            {
+                int res[2] = {i+1, j+1};
+                return vector<int>(res, res+2);
+            }
+            else if(numbers[i] + numbers[j] < target)
+                i++;
+            else 
+                j--;
+        }
         throw invalid_argument("the input has no solution");
     }
 

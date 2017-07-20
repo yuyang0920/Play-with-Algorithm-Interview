@@ -26,12 +26,34 @@ public:
     }
 };
 
+//时间复杂度O(n)
+//空间复杂度O(1)
+class MySolution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int k = 0;
+        int j = 0;
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(nums[i] != 0)
+                nums[j++] = nums[i];
+            else
+                k++;
+        }
+        for(int i=0; i<k; i++)
+            nums[j++]=0;
+    }
+};
+
+
+
 int main() {
 
-    int arr[] = {0, 1, 0, 3, 12};
+    int arr[] = {0, 1, 0, 3, 12, 9, 78, 0, 9};
+    //根据数组来创建vector
     vector<int> vec(arr, arr + sizeof(arr)/sizeof(int));
 
-    Solution().moveZeroes(vec);
+    MySolution().moveZeroes(vec);
 
     for( int i = 0 ; i < vec.size() ; i ++ )
         cout<<vec[i]<<" ";
