@@ -62,17 +62,20 @@ void deleteLinkedList(ListNode* head){
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-
+        assert(n>=0);
         ListNode* dummyHead = new ListNode(0);
         dummyHead->next = head;
 
         ListNode* p = dummyHead;
         ListNode* q = dummyHead;
+        //将q指针向后移动n+1次
+        //n最多为链表节点的总数
         for( int i = 0 ; i < n + 1 ; i ++ ){
+            //保证每一次新遍历的q不为空！
             assert(q);
             q = q->next;
         }
-
+        //此时q就是待删除节点的前一个位置！
         while( q ){
             p = p->next;
             q = q->next;

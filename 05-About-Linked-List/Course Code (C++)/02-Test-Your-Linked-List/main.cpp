@@ -16,7 +16,9 @@ ListNode* createLinkedList(int arr[], int n){
 
     if( n == 0 )
         return NULL;
-
+    //创建链表的过程中，我们需要不断的向头指针的
+    //下一个指针创建新节点，但是头指针是第一个节点，
+    //不是通过上一个节点的next指针而创建的
     ListNode* head = new ListNode(arr[0]);
     ListNode* curNode = head;
     for( int i = 1 ; i < n ; i ++ ){

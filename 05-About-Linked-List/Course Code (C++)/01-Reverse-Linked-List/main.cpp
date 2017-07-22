@@ -23,7 +23,7 @@ public:
             pre = cur;
             cur = next;
         }
-
+        //此时pre是新链表的头结点
         return pre;
     }
 };

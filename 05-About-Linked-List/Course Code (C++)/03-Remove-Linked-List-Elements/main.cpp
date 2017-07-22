@@ -62,13 +62,16 @@ class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
 
+        //在循环过程中不断的访问head—>val,
+        //要保证每次进入循环时head都不为空！
         while( head != NULL && head->val == val ){
 
             ListNode* node = head;
             head = head->next;
             delete node;
         }
-
+        //执行完上面的操作之后，就会由一个新的head
+        //此时也要保证head不为NULL
         if( head == NULL )
             return head;
 
@@ -96,7 +99,7 @@ int main() {
     ListNode* head = createLinkedList(arr, n);
     printLinkedList(head);
 
-    Solution().removeElements( head, 6);
+    head = Solution().removeElements( head, 1);
     printLinkedList(head);
 
     deleteLinkedList( head );

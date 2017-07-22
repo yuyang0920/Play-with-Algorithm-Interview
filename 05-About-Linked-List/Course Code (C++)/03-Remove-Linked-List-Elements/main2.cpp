@@ -92,7 +92,7 @@ int main() {
     ListNode* head = createLinkedList(arr, n);
     printLinkedList(head);
 
-    Solution().removeElements( head, 6);
+    Solution().removeElements( head, 1);
     printLinkedList(head);
 
     deleteLinkedList( head );

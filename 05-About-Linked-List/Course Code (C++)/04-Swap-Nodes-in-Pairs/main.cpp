@@ -68,10 +68,40 @@ public:
         while( p->next && p->next->next ){
             ListNode* node1 = p->next;
             ListNode* node2 = node1->next;
+            //最差为空也没有关系
             ListNode* next = node2->next;
+
             node2->next = node1;
             node1->next = next;
             p->next = node2;
+            //node1为下一个待交换的节点前面的节点！
+            p = node1;
+        }
+
+        ListNode* retHead = dummyHead->next;
+        delete dummyHead;
+
+        return retHead;
+    }
+};
+
+
+class Solution1 {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* dummyHead = new ListNode(-1);
+        dummyHead->next = head;
+
+        ListNode* p = dummyHead;
+        while( p->next && p->next->next ){
+            ListNode* node1 = p->next;
+            ListNode* node2 = node1->next;
+            ListNode* next = node2->next;
+
+            p->next = node2;
+            node2->next = node1;
+            node1->next = next;
+            
             p = node1;
         }
 

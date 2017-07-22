@@ -88,6 +88,37 @@ public:
     }
 };
 
+class Solution1 {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* dummyHead = new ListNode(-1);
+        dummyHead->next = head;
+
+        int len = 0;
+        ListNode* cur = dummyHead;
+        while(cur->next != NULL)
+        {
+            len++;
+            cur = cur->next;
+        }
+
+        ListNode* p = dummyHead;
+        for(int i=0; i<len-n; i++)
+        {
+            p = p->next;
+        }
+
+        ListNode* delNode = p->next;
+        p->next = delNode->next;
+        delete delNode;
+
+        ListNode* retNode = dummyHead->next;
+        delete dummyHead;
+        return retNode;
+
+    }
+};
+
 int main() {
 
     int arr[] = {1, 2, 3, 4, 5};
@@ -96,7 +127,7 @@ int main() {
     ListNode* head = createLinkedList(arr, n);
     printLinkedList(head);
 
-    head = Solution().removeNthFromEnd(head, 2);
+    head = Solution1().removeNthFromEnd(head, 5);
     printLinkedList(head);
 
     deleteLinkedList( head );
