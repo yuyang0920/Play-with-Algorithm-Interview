@@ -15,7 +15,8 @@ public:
 
         set<long long> record;
         for( int i = 0 ; i < nums.size() ; i ++ ){
-
+            //寻找大于等于t的最小的那个nums[i]
+            //避免32位整型溢出，要使用64位的整型
             if( record.lower_bound( (long long)nums[i] - (long long)t ) != record.end() &&
                 *record.lower_bound( (long long)nums[i] - (long long)t ) <= (long long)nums[i] + (long long)t )
                 return true;

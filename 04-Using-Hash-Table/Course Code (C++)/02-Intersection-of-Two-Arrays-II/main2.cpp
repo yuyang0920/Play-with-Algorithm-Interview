@@ -22,6 +22,7 @@ public:
                 resultVector.push_back( nums2[i] );
                 record[nums2[i]] --;
                 if( record[nums2[i]] == 0 )
+                    //频次为0时就删除掉该元素
                     record.erase( nums2[i] );
             }
 
