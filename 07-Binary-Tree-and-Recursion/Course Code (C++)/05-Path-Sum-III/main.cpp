@@ -14,14 +14,15 @@ class Solution {
 
 public:
     // 在以root为根节点的二叉树中,寻找和为sum的路径,返回这样的路径个数
+    // 路径并不限定从根开始终止于叶子节点
     int pathSum(TreeNode* root, int sum) {
 
         if( root == NULL )
             return 0;
 
-        return findPath( root , sum )
-                + pathSum( root->left , sum )
-                + pathSum( root->right , sum );
+        return findPath( root , sum )//包含root节点且和为sum的路径
+                + pathSum( root->left , sum )//在root左子树中重新寻找和为sum的路径
+                + pathSum( root->right , sum ); //不包含当前root节点且和为sum的路径
     }
 
 private:
@@ -29,14 +30,14 @@ private:
     // 在以node为根节点的二叉树中,寻找包含node的路径,和为sum
     // 返回这样的路径个数
     int findPath( TreeNode* node, int num){
-
+        //并不限定终止条件为叶子节点
         if( node == NULL )
             return 0;
 
         int res = 0;
         if( node->val == num )
             res += 1;
-
+        //节点中可能有负数
         res += findPath( node->left , num - node->val );
         res += findPath( node->right , num - node->val );
 

@@ -13,11 +13,17 @@ struct TreeNode {
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-
+        //递归终止条件
         if( root == NULL )
             return 0;
 
-        return 1 + max( maxDepth(root->left) , maxDepth(root->right) );
+        //递归逻辑
+        //先计算当前节点的左子树的最大高度
+        //再计算当前节点的右子树的最大高度
+        int leftLength = maxDepth(root->left);
+        int rightLength = maxDepth(root->right);
+        return 1 + max(leftLength+rightLength);
+        //return 1 + max( maxDepth(root->left) , maxDepth(root->right) );
     }
 };
 
