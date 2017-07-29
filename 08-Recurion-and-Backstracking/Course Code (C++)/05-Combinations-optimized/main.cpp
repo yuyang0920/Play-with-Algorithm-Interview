@@ -15,8 +15,12 @@ private:
             return;
         }
 
-        // 还有k - c.size()个空位, 所以,[i...n]中至少要有k-c.size()个元素
+        // 1.当进入到递归函数中，c中就已经存放着当前已经寻找到的组合中相应的元素
+        // 2.还有k - c.size()个空位, 所以,[i...n]中至少要有k-c.size()个元素
+        // 3.问题就在于i取多少时[i,n]中有k-c.size()个元素？
+        // 4.假设要保证k-c.size()为1的话，那么i就为n;为2的话，i就为n-1...
         // i最多为 n - (k-c.size()) + 1
+        // 要从[start...n]中寻找k-c.size()个元素来填补空位
         for( int i = start ; i <= n - (k-c.size()) + 1 ; i ++ ){
             c.push_back( i );
             generateCombinations(n, k, i + 1 , c );
