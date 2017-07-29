@@ -20,6 +20,7 @@ bool compare(const Interval &a, const Interval &b){
 }
 
 // 动态规划
+// O(n^2)
 class Solution {
 public:
     int eraseOverlapIntervals(vector<Interval>& intervals) {
@@ -29,12 +30,16 @@ public:
 
         sort(intervals.begin(), intervals.end(), compare);
 
+        //自底向上
         // memo[i]表示以intervals[i]为结尾的区间能构成的最长不重叠区间序列
         vector<int> memo( intervals.size() , 1 );
+        //从i=1开始考虑，i=0只有一个区间，这个区间自己就构成了不重叠区间
         for( int i = 1 ; i < intervals.size() ; i ++ )
-            // memo[i]
+            // 求memo[i]，扫描i之前的所有区间
             for( int j = 0 ; j < i ; j ++ )
+
                 if( intervals[i].start >= intervals[j].end )
+                    //说明当前第i个区间可以跟在第j个区间的后面
                     memo[i] = max( memo[i] , 1 + memo[j] );
 
         int res = 0;

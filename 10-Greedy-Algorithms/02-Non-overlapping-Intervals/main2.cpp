@@ -14,6 +14,8 @@ struct Interval {
 
 bool compare(const Interval &a, const Interval &b){
     if( a.end != b.end )
+        //默认true是升序排序
+        //谁的end越小谁在前面
         return a.end < b.end;
     return a.start < b.start;
 }
@@ -25,14 +27,16 @@ public:
 
         if( intervals.size() == 0 )
             return 0;
-
+        //谁的结束时间早，谁在前面
         sort(intervals.begin(), intervals.end(), compare);
-
+        //记录当前能保留的不重叠区间的最大值
         int res = 1;
+        //遍历i这个区间时，之前选择的区间是谁
         int pre = 0;
         for( int i = 1 ; i < intervals.size() ; i ++ )
             if( intervals[i].start >= intervals[pre].end ){
                 res ++;
+                //前一个区间更新为当前i这个区间。相当于往后移动
                 pre = i;
             }
 

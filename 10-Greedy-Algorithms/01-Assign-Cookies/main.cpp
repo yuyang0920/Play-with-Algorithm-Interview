@@ -3,18 +3,22 @@
 #include <algorithm>
 
 using namespace std;
-
+//O(nlogn)
 class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) {
-
+        //按照降序排序！！C++默认是从升序排序
+        //O(nlogn)
         sort(g.begin(), g.end(), greater<int>());
         sort(s.begin(), s.end(), greater<int>());
-
+        //用连个索引来跟踪两个数组
+        //分别指向最大的饼干和最贪心的小朋友
         int gi = 0, si = 0;
+        //多少个小朋友开心了
         int res = 0;
+        //O(n)
         while( gi < g.size() && si < s.size() ){
-
+            //当前最大的饼干能满足当前最贪心的小朋友
             if( s[si] >= g[gi] ){
                 res ++;
                 si ++;
