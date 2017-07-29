@@ -17,6 +17,9 @@ private:
 
         int res = -1;
         for( int i = 1 ; i <= n-1 ; i ++ )
+            //每次都将n分割成i 和 （n-i）
+            //i*（n-i）表示不继续分割了！
+            //breakInteger(n-i)表示对(n-i)继续分割
             res = max3( res , i*(n-i) , i * breakInteger(n-i) );
         return res;
     }

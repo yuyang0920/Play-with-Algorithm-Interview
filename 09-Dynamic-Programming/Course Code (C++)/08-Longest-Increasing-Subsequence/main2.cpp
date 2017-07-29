@@ -5,6 +5,7 @@ using namespace std;
 class Solution {
 
 public:
+    //O(N^2)
     int lengthOfLIS(vector<int>& nums) {
 
         if( nums.size() == 0 )
@@ -12,8 +13,11 @@ public:
 
         // memo[i] 表示以 nums[i] 为结尾的最长上升子序列的长度
         vector<int >memo( nums.size() , 1 );
+        //不用考虑nums[0]，因为初始时nums[0]就为1
         for( int i = 1 ; i < nums.size() ; i ++ )
+            //考察nums[i]之前的所有元素
             for( int j = 0 ; j < i ; j ++ )
+                //nums[i]可以跟在nums[j]的后面
                 if( nums[i] > nums[j] )
                     memo[i] = max( memo[i] , 1 + memo[j] );
 

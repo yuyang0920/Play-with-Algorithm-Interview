@@ -5,6 +5,7 @@ using namespace std;
 
 class Solution {
 private:
+    //记忆数组
     vector<int> memo;
 
     int max3( int a , int b , int c ){
@@ -23,6 +24,7 @@ private:
         int res = -1;
         for( int i = 1 ; i <= n-1 ; i ++ )
             res = max3( res , i*(n-i) , i * breakInteger(n-i) );
+        //对这次的结果进行记录
         memo[n] = res;
         return res;
     }

@@ -22,7 +22,7 @@ int main() {
 
     num = 0;
 
-    int n = 42;
+    int n = 10;
     time_t startTime = clock();
     int res = fib(n);
     time_t endTime = clock();

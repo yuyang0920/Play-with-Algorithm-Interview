@@ -16,10 +16,15 @@ public:
         vector<int> memo(C+1,0);
 
         for( int j = 0 ; j <= C ; j ++ )
+            //memo[0][j] = ( j >= w[0] ? v[0] : 0 );
             memo[j] = ( j >= w[0] ? v[0] : 0 );
-
+ 
         for( int i = 1 ; i < n ; i ++ )
+            //每一次处理都是从容量C开始向前走,直到j >= w[i]
+            //因为j<W[i]的时候，当前物品就已经不能放进背包里了
+            //当前j<W[i]的元素就是上一行中相应的元素。
             for( int j = C ; j >= w[i] ; j -- )
+                //memo[i][j] = max( memo[i][j], v[i] + memo[i-1][j-w[i]]);
                 memo[j] = max( memo[j], v[i] + memo[j-w[i]]);
 
         return memo[C];

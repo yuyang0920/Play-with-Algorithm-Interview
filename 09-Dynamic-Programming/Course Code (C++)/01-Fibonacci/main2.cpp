@@ -3,6 +3,7 @@
 #include <vector>
 using namespace std;
 
+//memo[i]就记录了第i个斐波拉契数列的值
 vector<int> memo;
 int num = 0;
 

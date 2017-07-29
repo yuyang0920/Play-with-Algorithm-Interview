@@ -18,8 +18,10 @@ public:
         for( int j = 0 ; j <= C ; j ++ )
             memo[0][j] = ( j >= w[0] ? v[0] : 0 );
 
+        //对于第i行来说，实际上使用的是i%2这行！
         for( int i = 1 ; i < n ; i ++ )
             for( int j = 0 ; j <= C ; j ++ ){
+                //memo[i][j] = memo[i-1][j];
                 memo[i%2][j] = memo[(i-1)%2][j];
                 if( j >= w[i] )
                     memo[i%2][j] = max( memo[i%2][j], v[i] + memo[(i-1)%2][j-w[i]]);
