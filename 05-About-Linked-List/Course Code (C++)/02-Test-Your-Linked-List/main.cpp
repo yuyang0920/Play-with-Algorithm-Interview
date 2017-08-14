@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cassert>
 using namespace std;
 
 /**
@@ -54,6 +54,26 @@ void deleteLinkedList(ListNode* head){
     return;
 }
 
+ListNode *findInvertedNode(ListNode *head, int k)
+{
+    assert(k>0);
+    //ListNode* dummyHead = new ListNode(0);
+    ListNode *first;
+    ListNode *second;
+    //dummyHead->next = head;
+    first = second = head;
+    for(int i=0; i<k; i++)
+    {
+        second = second->next;
+    }
+    while(second != NULL)
+    {
+        first = first->next;
+        second = second->next;
+    }
+    return first;
+}
+
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -79,9 +99,14 @@ int main(){
     ListNode* head = createLinkedList(arr, n);
     printLinkedList(head);
 
+    ListNode*p = findInvertedNode(head,4);
+    cout << p->val <<endl;
+
     ListNode* head2 = Solution().reverseList(head);
     printLinkedList(head2);
 
+    ListNode*p2 = findInvertedNode(head2,4);
+    cout << p2->val <<endl;
     deleteLinkedList(head2);
 
     return 0;
